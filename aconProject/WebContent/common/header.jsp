@@ -25,7 +25,7 @@
 				<div class="header--menu float--left">
 
 					<div class="logo">
-						<a href="" style="font-size: 30px; color: gray;"><img alt=""
+						<a href="main.jsp" ><img alt=""
 							src="img/logo.png" width="75px" height="45px"></a>
 					</div>
 					<ul class="header--mainmenu">
@@ -43,20 +43,20 @@
 					</div>
 					<ul class="header--submenu">
 						<li><a href="#" id="search"><img src="img/돋보기.jpg" alt=""></a></li>
-						<li id="cart"><a href="#"><img src="img/장바구니3.png" alt=""></a></li>
+						<li id="cart"><a href="CartOrderServlet"><img src="img/장바구니3.png" alt=""></a></li>
 					</ul>
 					<ul class="header--submenu2">
-						<li><a href="#">로그인</a></li>
+						<li><a href="">로그인</a></li>
 						<li><a href="#">회원가입</a></li>
 						<li><a href="#">고객센터</a></li>
 					</ul>
-
+	
 
 
 				</div>
 
 			</div>
-			
+		
 
 			<div class="header-bottom clearfix">
 

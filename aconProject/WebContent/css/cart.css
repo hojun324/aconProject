@@ -4,7 +4,6 @@
     /* 기본적인 사이트의 폰트 사이즈는 16px */
     font-weight: 400;
     color: #333;
-    width: 100%;
 
 }
 
@@ -35,9 +34,7 @@ header {
     width: 100%;
     z-index: 1; 
     background: #fff;
-    position: fixed;
-     
-
+    
     
  
     
@@ -84,9 +81,8 @@ header li:hover{
 	margin: 0 auto;
     height: 55px;
     position: relative;
-    padding: 10px 300px 10px 300px;
+    padding: 10px;
     border-bottom: 1px solid #eee; 
-    
     
 }
 
@@ -180,11 +176,11 @@ header li:hover{
 
 
 .header-bottom {
-		
+	
 	
     height: 30px;
     position: relative;
-    padding: 10px 10px 10px 300px;
+    padding: 10px;
     border-bottom: 1px solid #eee; 
     
 }
@@ -219,7 +215,7 @@ header li:hover{
 
 .slideimg img {
     width: 100%;
-    height: 400px;
+    height: 500px;
     /* opacity: 0; */
 }
 
@@ -291,9 +287,9 @@ footer {
 	width:100%;
      position: absolute; 
     /* background-color: darkgray; */
-    height: 253px;
+    height: 350px;
     color: #767676;
-    background-color: #eee;
+    background-color: #1d1d1d;
     left: 0;
     bottom: 0;
     
