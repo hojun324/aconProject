@@ -291,12 +291,9 @@ footer {
 	width:100%;
      position: absolute; 
     /* background-color: darkgray; */
-    height: 253px;
+    height: 308px;
     color: #767676;
-    background-color: #eee;
-    left: 0;
-    bottom: 0;
-    
+ 
    
     
     
@@ -324,7 +321,7 @@ footer .inner {
 
 
 footer .inner .center {
-    max-width: 800px;
+    max-width: 1050px;
     height: 150px;
     margin: 0 auto;
     box-sizing: border-box;
@@ -340,7 +337,7 @@ footer .inner .center ul {
 }
 
 footer .inner .center ul li {
-    margin-right: 12px;
+    margin-right: 25px;
 }
 
 footer .inner .center ul li:not(:last-child)::after {
