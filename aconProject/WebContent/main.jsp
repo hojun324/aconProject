@@ -15,8 +15,9 @@
 	rel="stylesheet">
 
 </head>
+<jsp:include page="common/header.jsp" flush="true" />
 <body>
-<jsp:include page="common/header.jsp" flush="true" /><br>
+
 	<div class="body_container">
 		        <!-- bener -->
         <div class="visual-container">
@@ -42,9 +43,10 @@
             </div>
         </div>
 	</div>
-	<jsp:include page="common/footer.jsp" flush="true" /><br>
+	
 	
 	</body>
+	<jsp:include page="common/footer.jsp" flush="true" />
 	<!-- <script type="text/javascript" src="js/main.js"></script> -->
 	<script type="text/javascript">
 	var currentIndex = 0,
