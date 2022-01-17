@@ -70,7 +70,6 @@
 이름<br>
 <input type="text" name="username"><br>
 생년월일<br>
-ex)YYYY/MM/DD<br>
 <input type="text" name="brith"><br>
 성별<br>
 <select name="gender">
@@ -104,7 +103,8 @@ lifestyle<br>
 	<option value="미들스탠다드">미들스탠다드</option>
 	<option value="포텐셜에너지">포텐셜에너지</option>
 </select><br>
-
+<!-- userdate -->
+<input type="hidden" name="userdate">
 <!-- 포인트 -->
 <input type="hidden" name="point" value=1000>
 <input type="submit" value="회원가입하기">
