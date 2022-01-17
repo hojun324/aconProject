@@ -46,8 +46,8 @@
 						<li id="cart"><a href="CartOrderServlet"><img src="img/장바구니3.png" alt=""></a></li>
 					</ul>
 					<ul class="header--submenu2">
-						<li><a href="">로그인</a></li>
-						<li><a href="#">회원가입</a></li>
+						<li><a href="loginForm.jsp">로그인</a></li>
+						<li><a href="memberform.jsp">회원가입</a></li>
 						<li><a href="#">고객센터</a></li>
 					</ul>
 	
