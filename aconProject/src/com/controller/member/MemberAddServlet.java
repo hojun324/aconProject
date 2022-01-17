@@ -24,13 +24,6 @@ public class MemberAddServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		/*
-		 * String brith = request.getParameter("birth"); String user_date =
-		 * request.getParameter("userdate"); SimpleDateFormat simdate = new
-		 * SimpleDateFormat("yyyy-MM-dd-HH:mm:ss"); try { Date brith1 =
-		 * simdate.parse(brith); } catch (ParseException e) { // TODO: handle exception
-		 * e.printStackTrace(); }
-		 */
 		
 		
 		String userid = request.getParameter("userid");
@@ -60,14 +53,15 @@ public class MemberAddServlet extends HttpServlet {
 	
 		
 		MemberService service = new MemberService();
-		/* int n = service.memberAdd(dto); */
+		int n = service.memberAdd(dto);
 		//sysout
 		
-		/*
-		 * HttpSession session = request.getSession(); if(n>0)
-		 * {session.setAttribute("memberAdd", "회원가입성공");};
-		 * session.setMaxInactiveInterval(60*60);// response.sendRedirect("main.jsp");
-		 */
+		
+		HttpSession session = request.getSession(); if(n>0)
+		{session.setAttribute("memberAdd", "회원가입성공");};
+		session.setMaxInactiveInterval(60*60);
+		response.sendRedirect("main.jsp");
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

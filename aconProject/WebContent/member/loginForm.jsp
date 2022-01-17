@@ -30,7 +30,7 @@
 <input type="submit" value="로그인"><br>
 </form>
 <!-- <input href="passwd" value="비밀번호 재설정"> -->
-<a href="memberForm" value="회원가입"></a><br>
+<a href="memberform" value="회원가입"></a><br>
 <!-- <input href="" value="로그인에 문제가 있으신가요?"><br> -->
 <hr>
 <!-- <input href="" value="비회원 주문 조회하기"><br>
