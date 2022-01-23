@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
+
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/reset.css">
@@ -12,9 +10,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
 	rel="stylesheet">
-<title>Insert title here</title>
-</head>
-<body>
+
 <div class="body_container">
 
 		<header class="section">
@@ -25,8 +21,8 @@
 				<div class="header--menu float--left">
 
 					<div class="logo">
-						<a href="main.jsp" ><img alt=""
-							src="img/logo.png" width="75px" height="45px"></a>
+						<a href="main" ><img alt=""
+							src="img/gagulife.png" width="75px" height="45px"></a>
 					</div>
 					<ul class="header--mainmenu">
 						<li id="comu"><a href="">커뮤니티</a></li>
@@ -50,7 +46,7 @@
 						<li><a href="memberform.jsp">회원가입</a></li>
 						<li><a href="#">고객센터</a></li>
 					</ul>
-	
+		
 
 
 				</div>
@@ -65,11 +61,11 @@
 					<div class="hideba">
 						
 							<ul class="list1" >
-								<li><a>홈</a></li>
+								<li><a href="main">홈</a></li>
 								<li><a>팔로잉</a></li>
 								<li><a>사진</a></li>
 								<li><a>집들이</a></li>
-								<li><a>Q&A</a></li>
+								<li><a href="quaServlet">Q&A</a></li>
 							</ul>
 
 							<ul class="list2" >
@@ -121,5 +117,3 @@
 	});
 		</script>
 		<!-- <script type="text/javascript" src="../js/main.js"></script> -->
-</body>
-</html>

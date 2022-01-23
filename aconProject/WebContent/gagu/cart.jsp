@@ -1,10 +1,19 @@
+<%@page import="com.dto.MemberDTO"%>
+<%@page import="java.io.Console"%>
+<%@page import="gagu.dto.CartDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+
+	
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <style type="text/css">
 header {
 	position: static;
@@ -12,18 +21,19 @@ header {
 
 .cart_container {
 	text-align: center;
-	background: #eee;
+	background: #f5f5f5;
 	position: relative;
 	padding-top: 30px;
 	padding-bottom: 100px;
 	display: flex;
+	margin: 0 auto;
 }
 
 .session {
 	width: 800px;
 	margin-left: 150px;
 	background-color: #fff;
-	height: 375px;
+	 height: 375px; 
 	margin-bottom: 20px;
 	position: relative;
 }
@@ -42,9 +52,10 @@ header {
 
 .cart-content h1 {
 	font-size: 14px;
-	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
 	height: 30px;
 	line-height: 31px;
+	margin-top: 30px;
 }
 
 .cartImg {
@@ -143,53 +154,123 @@ header {
 	    margin-left: 51px;
     margin-top: 20px;
 }
+
+
+.cartchar{
+
+}
+
+.session2{
+	width: 500px;
+    height: 403px;
+    margin: 0 auto;
+    
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#cart_order-btn{
+	border: none;
+	cursor: pointer;
+	background: #35C5f0;
+	width: 220px;
+	height: 50px;
+	color: #fff;
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 15px;
+	border-radius: 5px;
+}
 </style>
 </head>
 <body>
-	<div class="cart_container">
+	
+<%
+
+  List<CartDTO> list2 = (List<CartDTO>)request.getAttribute("cartList");  	
+if(list2.size() !=0){
+%>
+
+
+
+
+
+
+<div class="cart_container">
 
 		
 
 <div class="commerce-cart_content">
 <div class="cart_header">
 
-			<label style="float: left"> <input type="checkbox" /> <span>모두선택</span>
+			<label style="float: left"> <input type="checkbox" id="allcheck" /> <span>모두선택</span>
 			</label>
 
 			<button class="cart_delete cartbutton"
-				style="float: right; background: #eee;">선택삭제</button>
+				style="float: right; background: #f5f5f5;" id="delbtn">선택삭제</button>
 
 		</div>
-	<%-- 	<%for(int i = 0; i < 5;i++){
 		
-	%> --%>
+<%
+	  List<CartDTO> list = (List<CartDTO>)request.getAttribute("cartList"); 	
+
+
+
+	 	 for(int i = 0; i <list.size() ;i++){
+	 		  CartDTO dto = list.get(i); 
+	 		int cartno = dto.getCartno();  
+	 		String userid = dto.getUserid();  
+	 		int productno = dto.getProductno();  
+	 		int amount = dto.getAmount();
+	 		int delivery = dto.getDelivery();
+	 		String caddress = dto.getCaddress();  
+	 		String pimage = dto.getPimage();
+	 		String pname = dto.getPname();
+	 		String poption = dto.getPoption()  ;
+	 		String poption2 = dto.getPoption2() ; 
+	 		int price = dto.getPrice();
+	 		String pcolor = dto.getPcolor();
+	 		int salesrate = dto.getSalesrate();  
+	 		
+	 		
+	 
+		
+	%> 
+	
 
 		<div class="session">
 
-
+	
 			<div class="cart-content">
+			
+			
 
-				<h1>주식회사 보보 배송</h1>
-				<!-- h1 의 제목값은 %= 배송지%>" -->
+				<h1><%=caddress %></h1>
+				
 
 				<ul style="float: left;">
-					<li><input type="checkbox" id="cart-content_checkbox"></li>
-					<li><img alt="" src="img/cartimg_test1.jpg" class="cartImg"></li>
+					<li><input type="checkbox" id="cart-content_checkbox" class="check" name="check" value="<%=cartno%>" 	></li>
+					<li><img alt="" src="img/<%=pimage %>.jpg" class="cartImg"></li>
 					<li>
-						<p>[로보락] [4.8만원쿠폰] 로보락 S7 Plus 물걸레 로봇청소기(1/17~순차배송)</p>
+						<p><%=pname%></p>
 					</li>
 				</ul>
 
-				<button class="cartbutton" style="float: right;">
-					<img alt="" src="img/cartdelbutton2.jpg" class="cartdelbutton">
+				<button class="cartbutton" style="float: right;" >
+					<img alt="" src="img/cartdelbutton2.jpg" class="cartdelbutton" id="delonebutton" data-xxx="<%= cartno %>">
 				</button>
 
-				<div class="cart-color">
-					블리바 휴지통 단품 (아이보리 화이트)
 
-					<button class="cartbutton" style="float: right; background: #eee;">
+	
+				<div class="cart-color">
+					<%=poption %>
+					<!-- <button class="cartbutton" style="float: right; background: #eee;">
 						<img alt="" src="img/cartdelbutton.jpg">
-					</button>
+					</button> -->
 
 
 					<div class="cart-option">
@@ -205,17 +286,19 @@ header {
 							<option value="9">9</option>
 							<option value="10">10+</option>
 						</select>
-						<p style="float: right;">19,900원</p>
+						<p style="float: right;"><%=price%></p>
 					</div>
 
 				</div>
 
-				<div class="cart-color">
-					블리바 휴지통 단품 (아이보리 화이트)
 
-					<button class="cartbutton" style="float: right; background: #eee;">
+	<%if(poption2 !=null) {%>	
+				<div class="cart-color">
+					<%=poption2 %>
+
+					<!-- <button class="cartbutton" style="float: right; background: #eee;">
 						<img alt="" src="img/cartdelbutton.jpg">
-					</button>
+					</button> -->
 
 
 					<div class="cart-option">
@@ -231,43 +314,182 @@ header {
 							<option value="9">9</option>
 							<option value="10">10+</option>
 						</select>
-						<p style="float: right;">19,900원</p>
+						<p style="float: right;"><%=price %></p>
 
 					</div>
 					
 				</div>
+			<%}else{ %>
+				
+			<%} %>
+			
+				
+			
 				
 				<div class="cart-footer">
 						<button class="cartbutton" style="float: left">옵션변경</button>
 						<button class="cartbutton" style="float: left">바로구매</button>
 						
-						<p style="float: right;">69,900원</p>
+						<p style="float: right;"><%=price  %></p>
+						
+						
+					
+						
+						
 				</div>
 				
-				<h1 id="besongpay">배송비 여부</h1>
+						<%
+					 	if(delivery ==0){ 
+					 	%> 
+					 	<h1>배송비 무료</h1>
+					 	
+					 	 <%}else{ %> 
+					 	 <h1>배송비 <%=list.get(i).getDelivery() %>원</h1>
+					 	 <%} %> 
 					
-
-
+		
+			
 			</div>
-
-		</div>
-		<%-- <%} %> --%>
+			
+		
+	
+		 </div> 
+		  <%} %>
+		  
 		</div>
 		<div class="cart-buy">
 			<div class="cart-price" >
-				<div>총 상품금액<span>12345</span></div>
-				<div>총 배송비<span>12345</span></div>
+				<div>총 상품금액<span id="allsum">12345</span></div>
+				<div>총 배송비<span id="all">12345</span></div>
 				<div>총 할인금액<span>12345</span></div>
 				<div>결제금액<span>12345</span></div>
 			</div>
 			
 			
-			<button class="cart-buy_button">4개 상품 구매하기</button>
+			<button  class="cart-buy_button">구매하기</button>
+			
+			
 			
 		
 		</div>
 		
 	</div>
+	
+	
+	<%} else{%>
+	
+	
+	
+		<div class="cart_container">
+		<div class="session2">
+		
+		<a><img alt="" src="img/cartchar.jpg" width="160px" height="120px" id="cartchar"></a>
+		
+		<button id="cart_order-btn">상품 담으러 가기</button>
+		</div>
+		
+		</div>
+		
+		
+	<%} %>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	
+	
+	//전체선택
+	$("#allcheck").on("click", function() {
+		var result = this.checked;
+		$(".check").each(function(idx, data) {
+			this.checked = result;
+		});
+	});
+	
+	//선택된 녀석만 삭제
+	$("#delbtn").on("click", function() {
+		var num=[];
+		$("input:checkbox[name='check']:checked").each(function(idx, data) {
+			num[idx]=$(this).val();
+		});
+			
+		
+		
+		location.href = "/aconProject/CartDelservlet?data="+num;
+		
+	});
+	
+	
+	//삭제 버튼 클릭시 삭제
+	$(".cartdelbutton").on("click",function(){
+		
+		var num= $(this).attr("data-xxx");
+    	location.href= "/aconProject/CartOneDelservlet?cartno="+num;
+		
+	});
+	
+	
+	
+	
+	//전체 주문버튼
+   // $(".cart-buy_button").on("click",function(){
+    	
+    	/* var num=[];
+    	$("input:checkbox[name='check']:checked").each(function(idx,ele){
+    		num[idx]=$(this).val();
+    	});
+    	console.log(num);
+		 */
+	  
+    /* 
+			   	$("form").attr("action", "orderCartservlet");
+			  	$("form").submit();// trigger */
+			  	 
+    
+    	
+   // }); 
+	
+	
+  $(".cart-buy_button").on("click",function(){
+    	var num=[];
+    	$("input:checkbox[name='check']:checked").each(function(idx,ele){
+    		num[idx]=$(this).val();
+    	});
+    	console.log(num);
+    	
+    	
+    	if(num.length!=0){
+	  
+    		location.href="/aconProject/orderCartservlet?data="+num;
+    		
+    	}else{
+    		
+    		alert("제발");
+    	}
+    	  
+    	 
+    }); 
+	
 
+	
+});
+
+
+</script>
 </body>
 </html>
