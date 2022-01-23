@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+    <%@ page import="gagu.dto.MemberDTO" %>
+<!DOCTYPE html>
+<html>
+<head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/reset.css">
@@ -10,7 +13,15 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
 	rel="stylesheet">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+   MemberDTO dto =(MemberDTO)session.getAttribute("login");
 
+   if(dto != null){
+	 String username = dto.getUsername();
+%>
 <div class="body_container">
 
 		<header class="section">
@@ -21,7 +32,7 @@
 				<div class="header--menu float--left">
 
 					<div class="logo">
-						<a href="main" ><img alt=""
+						<a href="main.jsp" ><img alt=""
 							src="img/gagulife.png" width="75px" height="45px"></a>
 					</div>
 					<ul class="header--mainmenu">
@@ -42,11 +53,12 @@
 						<li id="cart"><a href="CartOrderServlet"><img src="img/장바구니3.png" alt=""></a></li>
 					</ul>
 					<ul class="header--submenu2">
-						<li><a href="loginForm.jsp">로그인</a></li>
-						<li><a href="memberform.jsp">회원가입</a></li>
-						<li><a href="#">고객센터</a></li>
+						<li><a href="LogoutServlet">로그아웃</a></li>
+						<li><a href="cuCenterServlet">고객센터</a></li>
+						<li><a href="MyPageServlet">MY PAGE</a></li>
 					</ul>
-		
+					
+	
 
 
 				</div>
@@ -88,6 +100,90 @@
 
 		</header>
 		</div>
+		<%
+   }else{
+		%>
+<div class="body_container">
+
+		<header class="section">
+
+			<div class="header-top clearfix">
+
+
+				<div class="header--menu float--left">
+
+					<div class="logo">
+						<a href="main.jsp" ><img alt=""
+							src="img/gagulife.png" width="75px" height="45px"></a>
+					</div>
+					<ul class="header--mainmenu">
+						<li id="comu"><a href="">커뮤니티</a></li>
+						<li id="store"><a href="">스토어</a></li>
+					</ul>
+
+				</div>
+
+				<div class="header--menu float--right">
+
+					<div class="search-bar init1">
+						<input type="text" value="오늘의집 통합검색"> <input type="submit"
+							value="">
+					</div>
+					<ul class="header--submenu">
+						<li><a href="#" id="search"><img src="img/돋보기.jpg" alt=""></a></li>
+						<li id="cart"><a href="CartOrderServlet"><img src="img/장바구니3.png" alt=""></a></li>
+					</ul>
+					<ul class="header--submenu2">
+						<li><a href="loginForm.jsp">로그인</a></li>
+						<li><a href="memberform.jsp">회원가입</a></li>
+						<li><a href="cuCenterServlet">고객센터</a></li>
+					</ul>
+					
+	
+
+
+				</div>
+
+			</div>
+		
+
+			<div class="header-bottom clearfix">
+
+				<div class="header--menu float--left">
+
+					<div class="hideba">
+						
+							<ul class="list1" >
+								<li><a href="main">홈</a></li>
+								<li><a>팔로잉</a></li>
+								<li><a>사진</a></li>
+								<li><a>집들이</a></li>
+								<li><a href="quaServlet">Q&A</a></li>
+							</ul>
+
+							<ul class="list2" >
+								<li><a>스토어홈</a></li>
+								<li><a>카테고리</a></li>
+								<li><a>베스트</a></li>
+								<li><a>오늘의딜</a></li>
+								<li><a>구스단독특가</a></li>
+							</ul>
+
+				
+					</div>
+
+				</div>
+
+			</div>
+			
+			
+			
+
+		</header>
+		</div>
+		<%
+   }//end if~else
+%>
 		<script type="text/javascript">
 		document.getElementById("search").addEventListener("click",function(ev){  
 	        $('.search-bar').fadeToggle('slow');  
@@ -117,3 +213,5 @@
 	});
 		</script>
 		<!-- <script type="text/javascript" src="../js/main.js"></script> -->
+</body>
+</html>
