@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CartMapper">
+
+	
+	<select id="cartList" resultType="gagu.dto.CartDTO">
+	select cartno,userid,productno,amount,delivery,caddress,pimage,pname,poption,poption2,price,pcolor,salesrate from cart
+	where userid = #{userid}
+     
+	</select>
+	
+	
+	<delete id="cartdelete" parameterType="arraylist">
+     delete from cart
+     where cartno
+     IN
+     <foreach collection="list" item="item" open="(" separator="," close=")">
+       #{item}
+     </foreach>
+   </delete>
+   
+   
+   <delete id="cartDel" parameterType="int">
+   	delete
+    from cart
+    where cartno = #{cartno}
+   </delete>
+	
+	
+	
+	<select id="orderAllConfirm" parameterType="arraylist" resultType="gagu.dto.CartDTO">
+	  select cartno,userid,productno,amount,delivery,caddress,pimage,pname,poption,poption2,price,pcolor,salesrate
+	  from cart
+	  where  cartno
+	  IN
+	 <foreach collection="list" item="item" open="(" separator="," close=")">
+       #{item}
+     </foreach>
+	</select>
+	
+	
+	
+	
+	
+	
+	<insert id="cartAdd" parameterType="gagu.dto.CartDTO">
+	
+		insert into cart (cartno,userid,productno,amount,delivery,caddress,pimage,pname,poption,poption2,price,pcolor,salesrate)
+		values (cart_seq.nextval,#{userid},#{productno},#{amount},#{delivery},null,#{pimage},#{pname},#{poption},#{poption2},#{price},null,#{salesrate})
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>

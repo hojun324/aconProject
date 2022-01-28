@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cuCenterMapper">
+
+   <select id="contentsList" parameterType="string" resultType="cuCenterDTO">
+       select num, title, content, category
+       from customer
+       where category = #{category}
+	</select>
+
+	<select id="contentsList1" parameterType="string" resultType="cuCenterDTO">
+       select num, title, content, category
+       from customer
+	</select>
+
+</mapper>
