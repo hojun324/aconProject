@@ -42,7 +42,8 @@ public class goodsAddServlet extends HttpServlet {
 			String disper  = request.getParameter("disper");
 
 			CartDTO cDTO = new CartDTO();
-
+			
+			cDTO.setUserid(userid);
 			cDTO.setProductno(Integer.parseInt(productno));
 			cDTO.setPname(pname);
 			cDTO.setPrice(Integer.parseInt(price));

@@ -48,7 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="cartAdd" parameterType="gagu.dto.CartDTO">
 	
 		insert into cart (cartno,userid,productno,amount,delivery,caddress,pimage,pname,poption,poption2,price,pcolor,salesrate)
-		values (cart_seq.nextval,2,#{productno},#{amount},#{delivery},null,#{pimage},#{pname},#{poption},#{poption2},#{price},null,#{salesrate})
+		values (cart_seq.nextval,#{userid},#{productno},#{amount},#{delivery},null,#{pimage},#{pname},#{poption},#{poption2},#{price},null,#{salesrate})
 	</insert>
 	
 	

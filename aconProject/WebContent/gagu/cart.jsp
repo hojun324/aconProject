@@ -1,4 +1,4 @@
-<%@page import="com.dto.MemberDTO"%>
+<%@page import="gagu.dto.MemberDTO"%>
 <%@page import="java.io.Console"%>
 <%@page import="gagu.dto.CartDTO"%>
 <%@page import="java.util.List"%>
@@ -41,7 +41,7 @@ header {
 .cart_header {
 	width: 800px;
 	margin-left: 150px;
-	height: 24px;
+	height: 5px;
 }
 
 .cartbutton {
@@ -75,7 +75,12 @@ header {
 }
 
 .cart-content ul li {
-	float: left;
+	    float: left;
+    margin-top: 0px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .cartdelbutton {
@@ -123,19 +128,21 @@ header {
 	width: 305px;
 	height: 150px;
 	background: #fff;
-    margin-left: 50px;
-    margin-top: 24px;
+    margin-left: 40px;
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 30px;
     text-align: left;
+        border: 1px solid #eee;
+        border-radius: 5px;
     
 }
 
 .cart-price div{
 	width:300px;
-	margin-bottom: 28px;
+	margin-bottom: 22px;
 }
 
 .cart-price span{
@@ -144,15 +151,23 @@ header {
 
 .commerce-cart_content{
 	    width: 950px;
-	    margin-left: 146px;
+	    margin-left: 200px;
 	    
 }
 
 .cart-buy_button{
-	width: 360px;
-	height: 50px;
-	    margin-left: 51px;
+	    width: 361px;
+    height: 50px;
+    margin-left: 40px;
     margin-top: 20px;
+    background: #35c5f0;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 5px;
+    
+}
 }
 
 
@@ -185,6 +200,22 @@ header {
 	margin-top: 15px;
 	border-radius: 5px;
 }
+
+
+.session{
+	border-radius: 10px;
+}
+
+#allcheck, .check{
+ -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  padding: 5px;
+	    width: 13px;
+
+
+}
 </style>
 </head>
 <body>
@@ -195,15 +226,9 @@ header {
 if(list2.size() !=0){
 %>
 
-
-
-
-
-
 <div class="cart_container">
 
 		
-
 <div class="commerce-cart_content">
 <div class="cart_header">
 
@@ -249,15 +274,25 @@ if(list2.size() !=0){
 			
 			
 
-				<h1><%=caddress %></h1>
+				<h1 style="border-bottom: 1px solid gray; border-bottom-color: #eee"><%=caddress %></h1>
 				
 
 				<ul style="float: left;">
 					<li><input type="checkbox" id="cart-content_checkbox" class="check" name="check" value="<%=cartno%>" 	></li>
 					<li><img alt="" src="img/<%=pimage %>.jpg" class="cartImg"></li>
 					<li>
-						<p><%=pname%></p>
+						<p><%=pname%></p><br>
+						<%-- <p style="font-size: 12px"> <%=delivery %></p> --%>
+						<%
+					 	if(delivery ==0){ 
+					 	%> 
+					 	<p style="font-size: 12px; color: gray;"  >무료배송</p>
+					 	
+					 	 <%}else{ %> 
+					 	 <p  style="font-size: 12px;color: gray;">배송비 <%=list.get(i).getDelivery() %>원</p>
+					 	 <%} %> 
 					</li>
+					
 				</ul>
 
 				<button class="cartbutton" style="float: right;" >
@@ -286,7 +321,7 @@ if(list2.size() !=0){
 							<option value="9">9</option>
 							<option value="10">10+</option>
 						</select>
-						<p style="float: right;"><%=price%></p>
+						<%-- <p style="float: right;"><%=price%></p> --%>
 					</div>
 
 				</div>
@@ -314,7 +349,7 @@ if(list2.size() !=0){
 							<option value="9">9</option>
 							<option value="10">10+</option>
 						</select>
-						<p style="float: right;"><%=price %></p>
+						<%-- <p style="float: right;"><%=price %></p> --%>
 
 					</div>
 					
@@ -330,7 +365,7 @@ if(list2.size() !=0){
 						<button class="cartbutton" style="float: left">옵션변경</button>
 						<button class="cartbutton" style="float: left">바로구매</button>
 						
-						<p style="float: right;"><%=price  %></p>
+						<p style="float: right;"><%=price  %>원</p>
 						
 						
 					
@@ -344,8 +379,11 @@ if(list2.size() !=0){
 					 	<h1>배송비 무료</h1>
 					 	
 					 	 <%}else{ %> 
-					 	 <h1>배송비 <%=list.get(i).getDelivery() %>원</h1>
+					 	 <h1 >배송비 <%=list.get(i).getDelivery() %>원</h1>
 					 	 <%} %> 
+					 	 <input type="hidden" value="<%=list.get(i).getDelivery() %>" class="deliveryAll">
+					 	 <input type="hidden" value="<%=list.get(i).getPrice() %>" class="priceAll">
+					 	 
 					
 		
 			
@@ -357,12 +395,16 @@ if(list2.size() !=0){
 		  <%} %>
 		  
 		</div>
+		
 		<div class="cart-buy">
 			<div class="cart-price" >
-				<div>총 상품금액<span id="allsum">12345</span></div>
-				<div>총 배송비<span id="all">12345</span></div>
-				<div>총 할인금액<span>12345</span></div>
-				<div>결제금액<span>12345</span></div>
+				<div>총 상품금액<span id="allsum" class="priceSum"></span></div>
+				<div>총 배송비<span id="all" class="deliverySum"></span></div>
+				<div>총 할인금액<span>-0원</span></div>
+				<div style="font-weight: bold; margin-top: 15px;" >
+				결제금액
+				<span style="font-size: 25px" class="totalSum"> 12345원</span>
+				</div>
 			</div>
 			
 			
@@ -411,7 +453,33 @@ if(list2.size() !=0){
 <script type="text/javascript">
 $(document).ready(function() {
 	
+		//배송비 합계
+		var deliverysum = 0;
+	    
+		$('.deliveryAll').each(function(){ //클래스가 money인 항목의 갯수만큼 진행
+			deliverysum += Number($(this).val()); 
+		});
+		console.log(deliverysum);
+		
+		$(".deliverySum").text("+"+deliverysum + "원");
+		
+		//가격 합계
 	
+		var pricesum = 0;
+	    
+		$('.priceAll').each(function(){ //클래스가 money인 항목의 갯수만큼 진행
+			pricesum += Number($(this).val()); 
+		});
+		console.log(pricesum);
+		
+		$(".priceSum").text(pricesum + "원");
+		
+		//총 합계
+		$(".totalSum").text(pricesum + deliverysum+ "원");
+		
+		
+		
+		
 	
 	//전체선택
 	$("#allcheck").on("click", function() {
@@ -479,7 +547,7 @@ $(document).ready(function() {
     		
     	}else{
     		
-    		alert("제발");
+    		alert("선택한 상품이 없습니다");
     	}
     	  
     	 

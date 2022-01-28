@@ -1,9 +1,25 @@
+<%@page import="gagu.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/reset.css">
+
+<style>
+.contentbtn{
+	background: #3fc5f0;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+</style>
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -33,8 +49,8 @@
 
 				<div class="header--menu float--right">
 
-					<div class="search-bar init1">
-						<input type="text" value="오늘의집 통합검색"> <input type="submit"
+					<div class="search-bar">
+						<input type="text" value="오늘의집 통합검색" style="color: gray;"> <input type="submit"
 							value="">
 					</div>
 					<ul class="header--submenu">
@@ -42,11 +58,24 @@
 						<li id="cart"><a href="CartOrderServlet"><img src="img/장바구니3.png" alt=""></a></li>
 					</ul>
 					<ul class="header--submenu2">
+					<%
+   MemberDTO dto =(MemberDTO)session.getAttribute("login");
+
+   if(dto != null){
+	 String username = dto.getUsername();
+%>
+<li><a href="LogoutServlet">로그아웃</a></li>
+						<li><a href="cuCenterServlet">고객센터</a></li>
+						<li><a href="MyPageServlet">MY PAGE</a></li>
+
+<%} else{%>
 						<li><a href="loginForm.jsp">로그인</a></li>
 						<li><a href="memberform.jsp">회원가입</a></li>
 						<li><a href="#">고객센터</a></li>
+						
+						<%} %>
 					</ul>
-		
+		<button class="contentbtn">글쓰기</button>
 
 
 				</div>

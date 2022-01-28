@@ -56,8 +56,30 @@
 		});
 	 
  });
-</script>    
+</script>  
+
+<style>
+
+	.memberform_container{
+		width: 1000px;
+		height: 1000px;
+		
+	}
+	.memberform{
+			
+		position: absolute;
+		margin: auto;
+		
+	
+	}
+</style>
+
+<div class="memberform_container">
+
+<div class="memberform">  
+
 <form action="MemberAddServlet" method="get">
+회원가입<br>
 아이디<br>
 <input type="text" name="userid" id="userid"><br> 
 비밀번호<br>
@@ -111,6 +133,16 @@ lifestyle<br>
 
 </form>
 이미 아이디가 있으신가요?<a href="LoginUIServlet">로그인</a>
+</div>
+
+</div>
+
+
+
+
+
+
+
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.

@@ -84,7 +84,7 @@ header li:hover{
 	margin: 0 auto;
     height: 55px;
     position: relative;
-    padding: 10px 300px 10px 300px;
+    padding: 10px 350px 10px 350px;
     border-bottom: 1px solid #eee; 
     
     
@@ -124,9 +124,9 @@ header li:hover{
     cursor: pointer;
 }
 
- .init1 {
+/*  .init1 {
     display: none;
-}  
+}   */
 
  
 
@@ -184,7 +184,7 @@ header li:hover{
 	
     height: 30px;
     position: relative;
-    padding: 10px 10px 10px 300px;
+    padding: 10px 10px 10px 350px;
     border-bottom: 1px solid #eee; 
     
 }
@@ -290,15 +290,10 @@ header li:hover{
 footer {
 	width:100%;
      position: absolute; 
-    /* background-color: darkgray; */
+     background-color: #fafafa; 
     height: 308px;
     color: #767676;
  
-   
-    
-    
-    
-  
 }
 
 footer a{
@@ -321,7 +316,7 @@ footer .inner {
 
 
 footer .inner .center {
-    max-width: 1050px;
+    max-width: 1200px;
     height: 150px;
     margin: 0 auto;
     box-sizing: border-box;
@@ -344,7 +339,7 @@ footer .inner .center ul li:not(:last-child)::after {
     content: "";
     width: 1px;
     height: 8px;
-    margin-left: 6px;
+    margin-left: 12px;
     bottom: 2px;
     background: #767676;
     position: absolute;

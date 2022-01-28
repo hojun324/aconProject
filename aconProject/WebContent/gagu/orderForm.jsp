@@ -9,6 +9,10 @@
 <title>Insert title here</title>
 
 <style type="text/css">
+
+button{
+	border: none;
+}
 .order_container {
 	text-align: center;
 	background: #fff;
@@ -17,6 +21,7 @@
 	padding-bottom: 100px;
 	display: flex;
 	margin: 0 auto;
+	    margin-left: 45px;
 }
 
 #orders {
@@ -27,10 +32,54 @@
 }
 
 .order-payment {
-	width: 950px;
+	width: 700px;
 	margin-left: 304px;
 	text-align: left;
 }
+
+.Tid{
+	margin-left: 105px;
+	
+	    width: 400px;
+}
+.Tid div {
+	margin-bottom: 10px;
+
+}
+
+
+.order_container input,select{
+	padding: 8px;	
+    width: 250px;
+    border-radius: 5px;
+    border: 2px solid #eee;
+    margin-bottom: 12px;
+ 
+    }
+    
+    .daddress{
+    	    font-size: 19px;
+    font-weight: bold;
+    color: #424242;
+    }
+    
+    .cart-orderhtn{
+    	    background: #35c5f0;
+    padding: 12px;
+    color: #eee;
+    font-weight: bold;
+    font-size: 17px;
+        width: 400px;
+        border-radius: 3px;
+    }
+    
+  .orderform-price{
+  	display: flex;
+    justify-content: space-between;
+
+  }
+    
+    
 </style>
 </head>
 
@@ -41,27 +90,27 @@
 <body>
 	<div class="order_container">
 		<div class="order-payment">
-			<h1>주문/결제</h1>
-
-			<section>
-				<div></div>
-				<hr>
-				이름 <input type="text" id="mname"><br> 
-				이메일 <input type="text" value="이메일">@
-				<select></select><br>
-				 <br> 휴대전화 <select id="mphone1"></select> <input
+			<h1 style="font-size: 22px;font-weight: bold; margin-bottom: 40px;">주문/결제</h1><br>
+			<div style=" color: #424242;font-size: 19px;font-weight: bold;border-bottom: 1px solid #eee;height: 33px; margin-bottom: 20px;">주문자</div>
+			<section  style=" margin-bottom: 80px;"  >
+				
+				이름 <input type="text" id="mname" style="margin-bottom: 18px; margin-left: 33px;"><br> 
+				이메일 <input type="text" value="이메일"  style=" margin-left: 18px;">@
+				<select style="    padding: 8px;width: 250px;"></select><br>
+				 <br> 휴대전화 <select id="mphone1" style="margin-left: 3px;"></select> <input
+				 
 					type="text" id="mphone2">
 			
 			</section>
 
-			<section>
+			<section style=" margin-bottom: 80px;">
 				<div>
-					<div>배송지</div>
+					<div style=" color: #424242;font-size: 19px;font-weight: bold;border-bottom: 1px solid #eee;height: 33px; margin-bottom: 20px;">배송지</div>
 					<div> 
 							위와 동일하게 채우기<input type="checkbox" name="copybtn" id="copybtn"> 
 					</div>
 				</div>
-				<hr>
+				
 				받는사람 <input type="text" id="ordername"> <br>
 				연락처 <select id="phone1"></select> <input type="text" id="phone2"> <br> 
 				주소 	<input type="text" name="post" id="sample4_postcode" placeholder="우편번호">
@@ -69,12 +118,14 @@
 					<input type="text" name="addr1" id="sample4_roadAddress" placeholder="도로명주소">
 					<input type="text" name="addr2" id="sample4_jibunAddress" placeholder="지번주소">
 					<br>
-				<select></select>
+				<select>
+					<option>배송시 요청사항을 선택해주세요</option>
+				</select>
 			</section>
-
-			<section>
-				<div>주문상품</div>
-				<hr>
+<div  style=" color: #424242;font-size: 19px;font-weight: bold;border-bottom: 1px solid #eee;height: 33px; margin-bottom: 20px;">주문상품</div>
+			<section style=" margin-bottom: 80px; border: 1px solid #eee" >
+				
+				
 				
 				<%
 	  List<CartDTO> list = (List<CartDTO>)request.getAttribute("cartList"); 	
@@ -100,20 +151,35 @@
 	 		
 	 
 		
-	%>  --%>
+	%>  
 				<div class="orderbox">
-					<div>
-						<ul>
-							<li></li>
-							<li></li>
-						</ul>
+					<div style="display: flex;justify-content: space-between; background: #f7f8fa; padding: 11px; margin-bottom: ">
+						<div><%=caddress %></div>
+						
+						<div>
+							<%
+								 	if(delivery ==0){ 
+								 	%> 
+								 	<h1>배송비 무료</h1>
+								 	
+								 	 <%}else{ %> 
+								 	 <h1 >배송비 <%=list.get(i).getDelivery() %>원</h1>
+							 <%} %> 
+						
+						</div>
 					</div>
-					<div>
-						<ul>
-							<li><img alt="" src="img/ <%=pimage%>.jpg" width="64px;" height="64px;"></li>
-							<li><p> <%=pname %></p></li>
-						</ul>
-						<span>399,000원 price</span> <span>1개 amount</span>
+					
+					
+					<div style="  padding: 20px;display: flex;flex-direction: row;">
+						<div>	
+								<img alt="" src="img/<%=pimage%>.jpg" width="64px;" height="64px;" style="border-radius: 5px; margin-right: 10px;" >						
+						</div>
+						<div style="padding-top: 8px;">
+							<span> <%=pname %></span><br>
+							<span style="font-size: 13px;color: #757575;"> <%=poption %>&nbsp;/</span><span  style="font-size: 13px;color: #757575;"> <%=poption2 %></span><br>
+							<span style="font-weight: bold;"> <%=price %>원</span>&nbsp;<span style="color: #757575;">&nbsp;| <%=amount %>개</span>						
+						</div>
+						
 					</div>
 				</div>
 				
@@ -124,9 +190,9 @@
 
 			</section>
 
-			<section>
-				<div>포인트</div>
-				<hr>
+			<section style=" margin-bottom: 80px;">
+				<div style=" color: #424242;font-size: 19px;font-weight: bold;border-bottom: 1px solid #eee;height: 33px; margin-bottom: 20px;">포인트</div>
+			
 
 				<div>
 					<input type="text">
@@ -137,9 +203,9 @@
 			</section>
 
 
-			<section>
-				<div>결제수단</div>
-				<hr>
+			<section style=" margin-bottom: 80px;">
+				<div style=" color: #424242;font-size: 19px;font-weight: bold;border-bottom: 1px solid #eee;height: 33px; margin-bottom: 20px;">결제수단</div>
+	
 				<div>
 					<ul>
 						<li></li>
@@ -167,43 +233,46 @@
 		</div>
 		
 		
-		<section>
-				<div>결제금액</div>
-				<div>
-					<div>총 상품금액</div>
-					<div>totalprice</div>
-				</div>
-
-				<div>
-					<div>배송비</div>
-					<div>delpay</div>
-				</div>
-
-				<div>
-					<div>포인트 사용</div>
-					<div>-point</div>
-				</div>
-
-				<hr>
-				<div>
-					<div>최종 결제 금액</div>
-					<div>398,000원</div>
-				</div>
-				<hr>
-
-				<div>
-					<label> <input type="checkbox"> <span>아래 내용에
-							모두 동의합니다.(필수)</span>
-					</label>
+		<section class="Tid">
+				<div class="cart-orderform" style="border: 1px solid #eee; margin-bottom: 25px; text-align: left; padding: 20px;" >
+					<div style="color: #424242; font-weight: bold; font-size: 20px; margin-bottom: 30px">결제금액</div>
+					<div class="orderform-price">
+						<div>총 상품금액</div>
+						<div>totalprice</div>
+					</div>
+	
+					<div class="orderform-price" >
+						<div>배송비</div>
+						<div>delpay</div>
+					</div>
+	
+					<div class="orderform-price">
+						<div>포인트 사용</div>
+						<div>-point</div>
+					</div>
+	
 					
-					<div>
-						<button>개인정보 수집 이용 및 제 3자 제공 동의</button><br>
-						<button>결제대행 서비스 이용약관 동의</button>
-						<div>본인은 만 14세 이상이며, 주문 내용을 확인하였습니다.</div>
+					<div class="orderform-price" style="border-top: 1px solid #eee; padding-top: 27px;">
+						<div>최종 결제 금액</div>
+						<div>398,000원</div>
+					</div>
+					<hr>
+	
+					<div >
+						<label> <input type="checkbox"> <span>아래 내용에
+								모두 동의합니다.(필수)</span>
+						</label>
+						
+						<div>
+							<button>개인정보 수집 이용 및 제 3자 제공 동의</button><br>
+							<button>결제대행 서비스 이용약관 동의</button>
+							<div>본인은 만 14세 이상이며, 주문 내용을 확인하였습니다.</div>
+						</div>
 					</div>
 				</div>
 				
-				<button onclick="location.href='orderDoneServlet'">(총 상품금액 + 배송비 - 포인트) 원 결제하기</button>
+				<button onclick="location.href='orderDoneServlet'"  class="cart-orderhtn" >
+				(총 상품금액 + 배송비 - 포인트) 원 결제하기</button>
 
 			</section>
 		
